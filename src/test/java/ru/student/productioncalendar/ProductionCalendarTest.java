@@ -119,6 +119,7 @@ class ProductionCalendarTest {
                 () -> calendar.addHoliday(null)
         );
     }
+
     @Test
     void shouldCountWorkingHoursIncludingPreHoliday() throws CalendarException {
         ProductionCalendar calendar = new ProductionCalendar(2026);
@@ -166,6 +167,7 @@ class ProductionCalendarTest {
                 )
         );
     }
+
     @Test
     void shouldRejectInvalidMonth() {
         ProductionCalendar calendar = new ProductionCalendar(2026);
@@ -175,6 +177,7 @@ class ProductionCalendarTest {
                 () -> calendar.printMonth(13)
         );
     }
+
     @Test
     void shouldRejectInvalidQuarter() {
         ProductionCalendar calendar = new ProductionCalendar(2026);
@@ -184,6 +187,7 @@ class ProductionCalendarTest {
                 () -> calendar.countWorkingDaysInQuarter(5)
         );
     }
+
     @Test
     void shouldRejectInvalidPeriod() {
         ProductionCalendar calendar = new ProductionCalendar(2026);
@@ -194,6 +198,15 @@ class ProductionCalendarTest {
                         LocalDate.of(2026, 5, 10),
                         LocalDate.of(2026, 5, 1)
                 )
+        );
+    }
+    @Test
+    void shouldRejectNullPreHoliday() {
+        ProductionCalendar calendar = new ProductionCalendar(2026);
+
+        assertThrows(
+                NullPointerException.class,
+                () -> calendar.addPreHoliday(null)
         );
     }
 }
