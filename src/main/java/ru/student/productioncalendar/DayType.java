@@ -8,8 +8,7 @@ public enum DayType implements DayRule {
     WORKING(8),
     WEEKEND(0),
     HOLIDAY(0),
-    PRE_HOLIDAY(7),
-    VACATION(0);
+    PRE_HOLIDAY(7);
 
     private final int hours;
 
