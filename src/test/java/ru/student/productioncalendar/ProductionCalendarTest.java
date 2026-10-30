@@ -166,5 +166,34 @@ class ProductionCalendarTest {
                 )
         );
     }
+    @Test
+    void shouldRejectInvalidMonth() {
+        ProductionCalendar calendar = new ProductionCalendar(2026);
 
+        assertThrows(
+                CalendarException.class,
+                () -> calendar.printMonth(13)
+        );
+    }
+    @Test
+    void shouldRejectInvalidQuarter() {
+        ProductionCalendar calendar = new ProductionCalendar(2026);
+
+        assertThrows(
+                CalendarException.class,
+                () -> calendar.countWorkingDaysInQuarter(5)
+        );
+    }
+    @Test
+    void shouldRejectInvalidPeriod() {
+        ProductionCalendar calendar = new ProductionCalendar(2026);
+
+        assertThrows(
+                CalendarException.class,
+                () -> calendar.countWorkingDays(
+                        LocalDate.of(2026, 5, 10),
+                        LocalDate.of(2026, 5, 1)
+                )
+        );
+    }
 }
